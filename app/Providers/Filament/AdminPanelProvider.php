@@ -40,6 +40,9 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
             ])
+            ->spa()
+            ->resourceCreatePageRedirect('index')
+            ->resourceEditPageRedirect('index')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
