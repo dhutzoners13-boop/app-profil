@@ -20,13 +20,27 @@ class SlideResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPresentationChartBar;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'CMS';
-
     protected static ?int $navigationSort = 6;
 
-    protected static ?string $modelLabel = 'Slide Banner';
+    public static function getModelLabel(): string
+    {
+        return __('Slide Banner');
+    }
 
-    protected static ?string $pluralModelLabel = 'Slide Banner';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Slide Banners');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Slide Banners');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('CMS');
+    }
 
     public static function form(Schema $schema): Schema
     {

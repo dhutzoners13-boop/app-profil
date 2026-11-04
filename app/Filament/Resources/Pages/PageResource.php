@@ -20,13 +20,27 @@ class PageResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentDuplicate;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'CMS';
-
     protected static ?int $navigationSort = 3;
 
-    protected static ?string $modelLabel = 'Halaman Statis';
+    public static function getModelLabel(): string
+    {
+        return __('Static Page');
+    }
 
-    protected static ?string $pluralModelLabel = 'Halaman Statis';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Static Pages');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Static Pages');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('CMS');
+    }
 
     public static function form(Schema $schema): Schema
     {

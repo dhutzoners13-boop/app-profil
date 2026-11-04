@@ -19,21 +19,21 @@ class PostsTable
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('Sampul')
+                    ->label(__('Cover'))
                     ->disk('public')
                     ->square(),
                 TextColumn::make('title')
-                    ->label('Judul')
+                    ->label(__('Title'))
                     ->searchable()
                     ->sortable()
                     ->limit(40),
                 TextColumn::make('category.name')
-                    ->label('Kategori')
+                    ->label(__('Category'))
                     ->sortable()
                     ->badge()
                     ->color('gray'),
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->colors([
                         'warning' => 'draft',
@@ -41,28 +41,28 @@ class PostsTable
                         'danger' => 'archived',
                     ]),
                 IconColumn::make('is_featured')
-                    ->label('Unggulan')
+                    ->label(__('Featured'))
                     ->boolean(),
                 TextColumn::make('view_count')
-                    ->label('Dilihat')
+                    ->label(__('Views'))
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('published_at')
-                    ->label('Dipublikasi')
+                    ->label(__('Published At'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('category_id')
-                    ->label('Kategori')
+                    ->label(__('Category'))
                     ->relationship('category', 'name'),
                 SelectFilter::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->options([
-                        'draft' => 'Draft',
-                        'published' => 'Published',
-                        'archived' => 'Archived',
+                        'draft' => __('Draft'),
+                        'published' => __('Published'),
+                        'archived' => __('Archived'),
                     ]),
             ])
             ->recordActions([

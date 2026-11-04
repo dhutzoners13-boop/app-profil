@@ -17,24 +17,24 @@ class QuestionsTable
         return $table
             ->columns([
                 TextColumn::make('created_at')
-                    ->label('Tanggal Masuk')
+                    ->label(__('Date Received'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
                 TextColumn::make('name')
-                    ->label('Nama Penanya')
+                    ->label(__('Questioner Name'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('topic.name')
-                    ->label('Topik')
+                    ->label(__('Topic'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
                 TextColumn::make('subject')
-                    ->label('Subjek')
+                    ->label(__('Subject'))
                     ->searchable()
                     ->limit(35),
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->colors([
                         'warning' => 'pending',
@@ -43,24 +43,24 @@ class QuestionsTable
                     ]),
                 TextColumn::make('answers_count')
                     ->counts('answers')
-                    ->label('Jawaban')
+                    ->label(__('Answers'))
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('topic_id')
-                    ->label('Topik')
+                    ->label(__('Topic'))
                     ->relationship('topic', 'name'),
                 SelectFilter::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->options([
-                        'pending' => 'Menunggu Respon',
-                        'answered' => 'Sudah Dijawab',
-                        'rejected' => 'Ditolak',
+                        'pending' => __('Awaiting Response'),
+                        'answered' => __('Answered'),
+                        'rejected' => __('Rejected'),
                     ]),
             ])
             ->recordActions([
-                EditAction::make()->label('Tanggapi / Edit'),
+                EditAction::make()->label(__('Respond / Edit')),
                 DeleteAction::make(),
             ])
             ->toolbarActions([

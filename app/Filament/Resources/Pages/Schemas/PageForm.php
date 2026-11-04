@@ -24,21 +24,21 @@ class PageForm
             ->components([
                 Grid::make(3)->schema([
                     Group::make([
-                        Section::make('Konten Halaman')
+                        Section::make(__('Page Content'))
                             ->schema([
                                 TextInput::make('title')
-                                    ->label('Judul Halaman')
+                                    ->label(__('Page Title'))
                                     ->required()
                                     ->maxLength(255)
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
                                 TextInput::make('slug')
-                                    ->label('Slug')
+                                    ->label(__('Slug'))
                                     ->required()
                                     ->maxLength(255)
                                     ->unique(ignoreRecord: true),
                                 RichEditor::make('content')
-                                    ->label('Isi Halaman')
+                                    ->label(__('Page Content'))
                                     ->fileAttachmentsDisk('public')
                                     ->fileAttachmentsDirectory('pages/attachments')
                                     ->fileAttachmentsVisibility('public')
@@ -47,31 +47,31 @@ class PageForm
                     ])->columnSpan(2),
 
                     Group::make([
-                        Section::make('Pengaturan')
+                        Section::make(__('Settings'))
                             ->schema([
                                 Hidden::make('user_id')
                                     ->default(fn () => Auth::id()),
                                 Select::make('status')
-                                    ->label('Status')
+                                    ->label(__('Status'))
                                     ->options([
-                                        'draft' => 'Draft',
-                                        'published' => 'Published',
+                                        'draft' => __('Draft'),
+                                        'published' => __('Published'),
                                     ])
                                     ->default('draft')
                                     ->required(),
                                 TextInput::make('sort_order')
-                                    ->label('Urutan')
+                                    ->label(__('Order'))
                                     ->numeric()
                                     ->default(0),
                                 Toggle::make('show_in_menu')
-                                    ->label('Tampilkan di Menu')
+                                    ->label(__('Show in Menu'))
                                     ->default(true),
                             ]),
 
-                        Section::make('Gambar Unggulan')
+                        Section::make(__('Featured Image'))
                             ->schema([
                                 FileUpload::make('image')
-                                    ->label('Gambar')
+                                    ->label(__('Image'))
                                     ->image()
                                     ->disk('public')
                                     ->directory('pages/images')

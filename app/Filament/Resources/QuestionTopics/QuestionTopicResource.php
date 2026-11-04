@@ -20,13 +20,27 @@ class QuestionTopicResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedChatBubbleLeftRight;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pertanyaan Masyarakat';
-
     protected static ?int $navigationSort = 2;
 
-    protected static ?string $modelLabel = 'Topik Pertanyaan';
+    public static function getModelLabel(): string
+    {
+        return __('Question Topic');
+    }
 
-    protected static ?string $pluralModelLabel = 'Topik Pertanyaan';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Question Topics');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Question Topics');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Public Inquiries');
+    }
 
     public static function form(Schema $schema): Schema
     {

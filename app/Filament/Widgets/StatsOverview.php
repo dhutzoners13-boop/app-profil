@@ -19,20 +19,20 @@ class StatsOverview extends StatsOverviewWidget
         $faqsCount = Faq::count();
 
         return [
-            Stat::make('Total Artikel', $postsCount)
-                ->description('Artikel & Berita terbit')
+            Stat::make(__('Total Articles'), $postsCount)
+                ->description(__('Published articles & news'))
                 ->descriptionIcon('heroicon-m-document-text')
                 ->color('success'),
-            Stat::make('Kategori', $categoriesCount)
-                ->description('Kategori konten aktif')
+            Stat::make(__('Categories'), $categoriesCount)
+                ->description(__('Active content categories'))
                 ->descriptionIcon('heroicon-m-folder')
                 ->color('info'),
-            Stat::make('Pertanyaan Masuk', $pendingQuestions)
-                ->description('Menunggu tanggapan')
+            Stat::make(__('Incoming Questions'), $pendingQuestions)
+                ->description(__('Awaiting response'))
                 ->descriptionIcon('heroicon-m-clock')
                 ->color($pendingQuestions > 0 ? 'warning' : 'gray'),
-            Stat::make('FAQ Publik', $faqsCount)
-                ->description('Tanya jawab tersimpan')
+            Stat::make(__('Public FAQs'), $faqsCount)
+                ->description(__('Saved questions & answers'))
                 ->descriptionIcon('heroicon-m-light-bulb')
                 ->color('primary'),
         ];

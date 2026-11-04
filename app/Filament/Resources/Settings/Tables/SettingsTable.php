@@ -17,34 +17,35 @@ class SettingsTable
         return $table
             ->columns([
                 TextColumn::make('group')
-                    ->label('Grup')
+                    ->label(__('Group'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
                 TextColumn::make('key')
-                    ->label('Key')
+                    ->label(__('Key'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('value')
-                    ->label('Nilai')
+                    ->label(__('Value'))
                     ->limit(50),
                 TextColumn::make('type')
-                    ->label('Tipe')
+                    ->label(__('Type'))
                     ->badge()
                     ->color('gray'),
                 TextColumn::make('updated_at')
-                    ->label('Terakhir Diperbarui')
+                    ->label(__('Last Updated'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->defaultSort('group', 'asc')
             ->filters([
                 SelectFilter::make('group')
+                    ->label(__('Group'))
                     ->options([
-                        'general' => 'Umum',
-                        'contact' => 'Kontak',
-                        'social' => 'Media Sosial',
-                        'api' => 'API',
+                        'general' => __('General'),
+                        'contact' => __('Contact'),
+                        'social' => __('Social Media'),
+                        'api' => __('API'),
                     ]),
             ])
             ->recordActions([

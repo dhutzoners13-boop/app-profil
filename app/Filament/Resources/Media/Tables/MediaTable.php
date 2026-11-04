@@ -17,21 +17,21 @@ class MediaTable
         return $table
             ->columns([
                 ImageColumn::make('file_path')
-                    ->label('Preview')
+                    ->label(__('Preview'))
                     ->disk('public')
                     ->square(),
                 TextColumn::make('file_name')
-                    ->label('Nama File')
+                    ->label(__('File Name'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('alt_text')
-                    ->label('Alt Text')
+                    ->label(__('Alt Text'))
                     ->searchable(),
                 TextColumn::make('user.name')
-                    ->label('Pengunggah')
+                    ->label(__('Uploader'))
                     ->sortable(),
                 TextColumn::make('created_at')
-                    ->label('Diunggah')
+                    ->label(__('Uploaded At'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])

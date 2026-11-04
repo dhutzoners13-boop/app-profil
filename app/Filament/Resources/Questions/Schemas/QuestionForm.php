@@ -15,55 +15,55 @@ class QuestionForm
     {
         return $schema
             ->components([
-                Section::make('Identitas Penanya')
+                Section::make(__('Questioner Identity'))
                     ->schema([
                         Grid::make(3)->schema([
                             TextInput::make('name')
-                                ->label('Nama Lengkap')
+                                ->label(__('Full Name'))
                                 ->required()
                                 ->maxLength(255),
                             TextInput::make('email')
-                                ->label('Email')
+                                ->label(__('Email'))
                                 ->email()
                                 ->required()
                                 ->maxLength(255),
                             TextInput::make('phone')
-                                ->label('No. Telepon / WhatsApp')
+                                ->label(__('Phone / WhatsApp'))
                                 ->tel()
                                 ->maxLength(50),
                         ]),
                     ]),
 
-                Section::make('Detail Pertanyaan')
+                Section::make(__('Question Details'))
                     ->schema([
                         Grid::make(2)->schema([
                             Select::make('topic_id')
-                                ->label('Topik / Kategori')
+                                ->label(__('Topic / Category'))
                                 ->relationship('topic', 'name')
                                 ->searchable()
                                 ->preload()
                                 ->required(),
                             Select::make('status')
-                                ->label('Status Pertanyaan')
+                                ->label(__('Question Status'))
                                 ->options([
-                                    'pending' => 'Menunggu Respon',
-                                    'answered' => 'Sudah Dijawab',
-                                    'rejected' => 'Ditolak / Tidak Sesuai',
+                                    'pending' => __('Awaiting Response'),
+                                    'answered' => __('Answered'),
+                                    'rejected' => __('Rejected / Irrelevant'),
                                 ])
                                 ->default('pending')
                                 ->required(),
                         ]),
                         TextInput::make('subject')
-                            ->label('Judul / Subjek')
+                            ->label(__('Title / Subject'))
                             ->required()
                             ->maxLength(255),
                         Textarea::make('body')
-                            ->label('Isi Pertanyaan')
+                            ->label(__('Question Body'))
                             ->rows(5)
                             ->required()
                             ->columnSpanFull(),
                         TextInput::make('ip_address')
-                            ->label('IP Address')
+                            ->label(__('IP Address'))
                             ->disabled()
                             ->dehydrated(false),
                     ]),

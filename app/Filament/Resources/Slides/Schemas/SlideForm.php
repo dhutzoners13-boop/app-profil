@@ -17,23 +17,23 @@ class SlideForm
     {
         return $schema
             ->components([
-                Section::make('Informasi Slide')
+                Section::make(__('Slide Information'))
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('title')
-                                ->label('Judul Slide')
+                                ->label(__('Slide Title'))
                                 ->required()
                                 ->maxLength(255),
                             TextInput::make('link_url')
-                                ->label('URL Tujuan (Link Klik)')
+                                ->label(__('Target URL (Click Link)'))
                                 ->placeholder('https://...'),
                         ]),
                         Textarea::make('description')
-                            ->label('Deskripsi Singkat')
+                            ->label(__('Short Description'))
                             ->rows(3)
                             ->columnSpanFull(),
                         FileUpload::make('image')
-                            ->label('Gambar Slide (Banner)')
+                            ->label(__('Slide Image (Banner)'))
                             ->image()
                             ->disk('public')
                             ->directory('slides')
@@ -42,15 +42,15 @@ class SlideForm
                             ->columnSpanFull(),
                         Grid::make(4)->schema([
                             DatePicker::make('start_date')
-                                ->label('Mulai Tayang'),
+                                ->label(__('Start Date')),
                             DatePicker::make('end_date')
-                                ->label('Selesai Tayang'),
+                                ->label(__('End Date')),
                             TextInput::make('sort_order')
-                                ->label('Urutan')
+                                ->label(__('Order'))
                                 ->numeric()
                                 ->default(0),
                             Toggle::make('is_active')
-                                ->label('Aktif')
+                                ->label(__('Active'))
                                 ->default(true),
                         ]),
                     ]),

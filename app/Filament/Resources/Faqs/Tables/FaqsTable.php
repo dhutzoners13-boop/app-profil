@@ -18,26 +18,26 @@ class FaqsTable
         return $table
             ->columns([
                 TextColumn::make('topic.name')
-                    ->label('Topik')
+                    ->label(__('Topic'))
                     ->badge()
                     ->color('info')
                     ->sortable(),
                 TextColumn::make('question')
-                    ->label('Pertanyaan')
+                    ->label(__('Question'))
                     ->searchable()
                     ->limit(50),
                 TextColumn::make('sort_order')
-                    ->label('Urutan')
+                    ->label(__('Order'))
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean(),
             ])
             ->defaultSort('sort_order', 'asc')
             ->filters([
                 SelectFilter::make('topic_id')
-                    ->label('Topik')
+                    ->label(__('Topic'))
                     ->relationship('topic', 'name'),
             ])
             ->recordActions([

@@ -17,36 +17,36 @@ class CategoryForm
     {
         return $schema
             ->components([
-                Section::make('Informasi Kategori')
+                Section::make(__('Category Information'))
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('name')
-                                ->label('Nama Kategori')
+                                ->label(__('Category Name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->live(onBlur: true)
                                 ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
                             TextInput::make('slug')
-                                ->label('Slug (URL)')
+                                ->label(__('Slug (URL)'))
                                 ->required()
                                 ->maxLength(255)
                                 ->unique(ignoreRecord: true),
                         ]),
                         Textarea::make('description')
-                            ->label('Deskripsi')
+                            ->label(__('Description'))
                             ->rows(3)
                             ->columnSpanFull(),
                         Grid::make(2)->schema([
                             TextInput::make('icon')
-                                ->label('Heroicon / Icon Class')
+                                ->label(__('Heroicon / Icon Class'))
                                 ->placeholder('heroicon-o-folder'),
                             TextInput::make('sort_order')
-                                ->label('Urutan')
+                                ->label(__('Order'))
                                 ->numeric()
                                 ->default(0),
                         ]),
                         Toggle::make('is_active')
-                            ->label('Status Aktif')
+                            ->label(__('Active Status'))
                             ->default(true),
                     ]),
             ]);

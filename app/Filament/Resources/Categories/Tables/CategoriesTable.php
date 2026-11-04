@@ -18,25 +18,26 @@ class CategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama')
+                    ->label(__('Name'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')
+                    ->label(__('Slug'))
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('posts_count')
                     ->counts('posts')
-                    ->label('Jumlah Post')
+                    ->label(__('Total Posts'))
                     ->sortable(),
                 TextColumn::make('sort_order')
-                    ->label('Urutan')
+                    ->label(__('Order'))
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean(),
                 TextColumn::make('created_at')
-                    ->label('Dibuat')
+                    ->label(__('Created At'))
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -44,10 +45,10 @@ class CategoriesTable
             ->defaultSort('sort_order', 'asc')
             ->filters([
                 SelectFilter::make('is_active')
-                    ->label('Status Aktif')
+                    ->label(__('Active Status'))
                     ->options([
-                        '1' => 'Aktif',
-                        '0' => 'Nonaktif',
+                        '1' => __('Active'),
+                        '0' => __('Inactive'),
                     ]),
             ])
             ->recordActions([

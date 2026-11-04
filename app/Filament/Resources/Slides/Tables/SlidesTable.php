@@ -19,36 +19,37 @@ class SlidesTable
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('Banner')
+                    ->label(__('Banner'))
                     ->disk('public')
                     ->width(120)
                     ->height(60),
                 TextColumn::make('title')
-                    ->label('Judul')
+                    ->label(__('Title'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('start_date')
-                    ->label('Mulai')
+                    ->label(__('Start'))
                     ->date('d M Y')
                     ->sortable(),
                 TextColumn::make('end_date')
-                    ->label('Selesai')
+                    ->label(__('End'))
                     ->date('d M Y')
                     ->sortable(),
                 TextColumn::make('sort_order')
-                    ->label('Urutan')
+                    ->label(__('Order'))
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean(),
             ])
             ->defaultSort('sort_order', 'asc')
             ->filters([
                 SelectFilter::make('is_active')
+                    ->label(__('Active Status'))
                     ->options([
-                        '1' => 'Aktif',
-                        '0' => 'Nonaktif',
+                        '1' => __('Active'),
+                        '0' => __('Inactive'),
                     ]),
             ])
             ->recordActions([

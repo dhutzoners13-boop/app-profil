@@ -26,24 +26,24 @@ class PostForm
             ->components([
                 Grid::make(3)->schema([
                     Group::make([
-                        Section::make('Konten Artikel')
+                        Section::make(__('Article Content'))
                             ->schema([
                                 TextInput::make('title')
-                                    ->label('Judul')
+                                    ->label(__('Title'))
                                     ->required()
                                     ->maxLength(255)
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state ?? ''))),
                                 TextInput::make('slug')
-                                    ->label('Slug')
+                                    ->label(__('Slug'))
                                     ->required()
                                     ->maxLength(255)
                                     ->unique(ignoreRecord: true),
                                 Textarea::make('summary')
-                                    ->label('Ringkasan')
+                                    ->label(__('Summary'))
                                     ->rows(3),
                                 RichEditor::make('content')
-                                    ->label('Isi Artikel')
+                                    ->label(__('Article Content'))
                                     ->fileAttachmentsDisk('public')
                                     ->fileAttachmentsDirectory('posts/attachments')
                                     ->fileAttachmentsVisibility('public')
@@ -52,37 +52,37 @@ class PostForm
                     ])->columnSpan(2),
 
                     Group::make([
-                        Section::make('Publikasi & Kategori')
+                        Section::make(__('Publication & Category'))
                             ->schema([
                                 Hidden::make('user_id')
                                     ->default(fn () => Auth::id()),
                                 Select::make('category_id')
-                                    ->label('Kategori')
+                                    ->label(__('Category'))
                                     ->relationship('category', 'name')
                                     ->searchable()
                                     ->preload()
                                     ->required(),
                                 Select::make('status')
-                                    ->label('Status')
+                                    ->label(__('Status'))
                                     ->options([
-                                        'draft' => 'Draft',
-                                        'published' => 'Published',
-                                        'archived' => 'Archived',
+                                        'draft' => __('Draft'),
+                                        'published' => __('Published'),
+                                        'archived' => __('Archived'),
                                     ])
                                     ->default('draft')
                                     ->required(),
                                 DateTimePicker::make('published_at')
-                                    ->label('Tanggal Publikasi')
+                                    ->label(__('Publication Date'))
                                     ->default(now()),
                                 Toggle::make('is_featured')
-                                    ->label('Artikel Unggulan')
+                                    ->label(__('Featured Article'))
                                     ->default(false),
                             ]),
 
-                        Section::make('Gambar Utama')
+                        Section::make(__('Main Image'))
                             ->schema([
                                 FileUpload::make('image')
-                                    ->label('Gambar Sampul')
+                                    ->label(__('Cover Image'))
                                     ->image()
                                     ->disk('public')
                                     ->directory('posts/images')

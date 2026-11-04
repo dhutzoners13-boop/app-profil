@@ -20,13 +20,27 @@ class FaqResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedLightBulb;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Pertanyaan Masyarakat';
-
     protected static ?int $navigationSort = 3;
 
-    protected static ?string $modelLabel = 'FAQ';
+    public static function getModelLabel(): string
+    {
+        return __('FAQ');
+    }
 
-    protected static ?string $pluralModelLabel = 'FAQ';
+    public static function getPluralModelLabel(): string
+    {
+        return __('FAQs');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('FAQs');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Public Inquiries');
+    }
 
     public static function form(Schema $schema): Schema
     {

@@ -16,50 +16,50 @@ class MenuForm
     {
         return $schema
             ->components([
-                Section::make('Informasi Menu')
+                Section::make(__('Menu Information'))
                     ->schema([
                         Grid::make(3)->schema([
                             TextInput::make('name')
-                                ->label('Nama Menu')
+                                ->label(__('Menu Name'))
                                 ->required()
                                 ->maxLength(255),
                             Select::make('location')
-                                ->label('Lokasi Penempatan')
+                                ->label(__('Placement Location'))
                                 ->options([
-                                    'header' => 'Header (Navigasi Atas)',
-                                    'footer' => 'Footer (Bawah)',
-                                    'sidebar' => 'Sidebar (Samping)',
+                                    'header' => __('Header (Top Navigation)'),
+                                    'footer' => __('Footer (Bottom)'),
+                                    'sidebar' => __('Sidebar (Side)'),
                                 ])
                                 ->default('header')
                                 ->required(),
                             Toggle::make('is_active')
-                                ->label('Status Aktif')
+                                ->label(__('Active Status'))
                                 ->default(true),
                         ]),
                     ]),
 
-                Section::make('Daftar Item Menu')
+                Section::make(__('Menu Items List'))
                     ->schema([
                         Repeater::make('items')
                             ->relationship('items')
                             ->schema([
                                 Grid::make(4)->schema([
                                     TextInput::make('label')
-                                        ->label('Label')
+                                        ->label(__('Label'))
                                         ->required(),
                                     Select::make('type')
-                                        ->label('Tipe')
+                                        ->label(__('Type'))
                                         ->options([
-                                            'custom' => 'Custom URL',
-                                            'page' => 'Halaman Statis',
-                                            'category' => 'Kategori Post',
+                                            'custom' => __('Custom URL'),
+                                            'page' => __('Static Page'),
+                                            'category' => __('Post Category'),
                                         ])
                                         ->default('custom'),
                                     TextInput::make('url')
-                                        ->label('URL / Path')
+                                        ->label(__('URL / Path'))
                                         ->placeholder('/tentang-kami atau https://...'),
                                     Toggle::make('is_active')
-                                        ->label('Aktif')
+                                        ->label(__('Active'))
                                         ->default(true),
                                 ]),
                             ])

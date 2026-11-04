@@ -20,13 +20,27 @@ class MenuResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBars3;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'CMS';
-
     protected static ?int $navigationSort = 5;
 
-    protected static ?string $modelLabel = 'Menu';
+    public static function getModelLabel(): string
+    {
+        return __('Menu');
+    }
 
-    protected static ?string $pluralModelLabel = 'Menu Navigasi';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Navigation Menus');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Navigation Menus');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('CMS');
+    }
 
     public static function form(Schema $schema): Schema
     {

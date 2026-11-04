@@ -19,40 +19,42 @@ class PagesTable
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('Gambar')
+                    ->label(__('Image'))
                     ->disk('public')
                     ->square(),
                 TextColumn::make('title')
-                    ->label('Judul')
+                    ->label(__('Title'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')
+                    ->label(__('Slug'))
                     ->searchable(),
                 TextColumn::make('status')
-                    ->label('Status')
+                    ->label(__('Status'))
                     ->badge()
                     ->colors([
                         'warning' => 'draft',
                         'success' => 'published',
                     ]),
                 TextColumn::make('sort_order')
-                    ->label('Urutan')
+                    ->label(__('Order'))
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('show_in_menu')
-                    ->label('Di Menu')
+                    ->label(__('In Menu'))
                     ->boolean(),
                 TextColumn::make('updated_at')
-                    ->label('Terakhir Diubah')
+                    ->label(__('Last Modified'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->defaultSort('sort_order', 'asc')
             ->filters([
                 SelectFilter::make('status')
+                    ->label(__('Status'))
                     ->options([
-                        'draft' => 'Draft',
-                        'published' => 'Published',
+                        'draft' => __('Draft'),
+                        'published' => __('Published'),
                     ]),
             ])
             ->recordActions([

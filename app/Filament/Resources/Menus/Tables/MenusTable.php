@@ -18,11 +18,11 @@ class MenusTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Menu')
+                    ->label(__('Menu Name'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('location')
-                    ->label('Lokasi')
+                    ->label(__('Location'))
                     ->badge()
                     ->colors([
                         'primary' => 'header',
@@ -31,22 +31,23 @@ class MenusTable
                     ]),
                 TextColumn::make('items_count')
                     ->counts('items')
-                    ->label('Jumlah Link')
+                    ->label(__('Total Links'))
                     ->sortable(),
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean(),
                 TextColumn::make('updated_at')
-                    ->label('Terakhir Diubah')
+                    ->label(__('Last Modified'))
                     ->dateTime('d M Y H:i')
                     ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('location')
+                    ->label(__('Location'))
                     ->options([
-                        'header' => 'Header',
-                        'footer' => 'Footer',
-                        'sidebar' => 'Sidebar',
+                        'header' => __('Header'),
+                        'footer' => __('Footer'),
+                        'sidebar' => __('Sidebar'),
                     ]),
             ])
             ->recordActions([

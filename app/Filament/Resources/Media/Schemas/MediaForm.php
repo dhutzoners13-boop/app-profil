@@ -15,12 +15,12 @@ class MediaForm
     {
         return $schema
             ->components([
-                Section::make('Upload Media')
+                Section::make(__('Upload Media'))
                     ->schema([
                         Hidden::make('user_id')
                             ->default(fn () => Auth::id()),
                         FileUpload::make('file_path')
-                            ->label('Pilih File / Gambar')
+                            ->label(__('Select File / Image'))
                             ->disk('public')
                             ->directory('uploads')
                             ->visibility('public')
@@ -28,7 +28,7 @@ class MediaForm
                             ->storeFileNamesIn('file_name')
                             ->required(),
                         TextInput::make('alt_text')
-                            ->label('Teks Alternatif (Alt Text)')
+                            ->label(__('Alternative Text (Alt Text)'))
                             ->maxLength(255),
                     ]),
             ]);

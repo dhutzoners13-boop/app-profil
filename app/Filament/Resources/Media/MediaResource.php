@@ -20,13 +20,27 @@ class MediaResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'CMS';
-
     protected static ?int $navigationSort = 4;
 
-    protected static ?string $modelLabel = 'Media';
+    public static function getModelLabel(): string
+    {
+        return __('Media');
+    }
 
-    protected static ?string $pluralModelLabel = 'Media Library';
+    public static function getPluralModelLabel(): string
+    {
+        return __('Media Library');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Media Library');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('CMS');
+    }
 
     public static function form(Schema $schema): Schema
     {

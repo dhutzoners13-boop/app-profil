@@ -18,31 +18,32 @@ class QuestionTopicsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Topik')
+                    ->label(__('Topic'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('questions_count')
                     ->counts('questions')
-                    ->label('Total Pertanyaan')
+                    ->label(__('Total Questions'))
                     ->sortable(),
                 TextColumn::make('faqs_count')
                     ->counts('faqs')
-                    ->label('Total FAQ')
+                    ->label(__('Total FAQs'))
                     ->sortable(),
                 TextColumn::make('sort_order')
-                    ->label('Urutan')
+                    ->label(__('Order'))
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('is_active')
-                    ->label('Aktif')
+                    ->label(__('Active'))
                     ->boolean(),
             ])
             ->defaultSort('sort_order', 'asc')
             ->filters([
                 SelectFilter::make('is_active')
+                    ->label(__('Active Status'))
                     ->options([
-                        '1' => 'Aktif',
-                        '0' => 'Nonaktif',
+                        '1' => __('Active'),
+                        '0' => __('Inactive'),
                     ]),
             ])
             ->recordActions([

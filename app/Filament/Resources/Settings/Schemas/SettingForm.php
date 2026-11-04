@@ -15,38 +15,38 @@ class SettingForm
     {
         return $schema
             ->components([
-                Section::make('Konfigurasi Pengaturan')
+                Section::make(__('Configuration Settings'))
                     ->schema([
                         Grid::make(3)->schema([
                             Select::make('group')
-                                ->label('Kelompok Pengaturan')
+                                ->label(__('Setting Group'))
                                 ->options([
-                                    'general' => 'Umum (Profil Instansi)',
-                                    'contact' => 'Kontak & Alamat',
-                                    'social' => 'Media Sosial',
-                                    'api' => 'Integrasi / API',
+                                    'general' => __('General (Institution Profile)'),
+                                    'contact' => __('Contact & Address'),
+                                    'social' => __('Social Media'),
+                                    'api' => __('Integration / API'),
                                 ])
                                 ->default('general')
                                 ->required(),
                             TextInput::make('key')
-                                ->label('Key Identitas')
+                                ->label(__('Identity Key'))
                                 ->required()
                                 ->maxLength(255)
                                 ->unique(ignoreRecord: true),
                             Select::make('type')
-                                ->label('Tipe Nilai')
+                                ->label(__('Value Type'))
                                 ->options([
-                                    'text' => 'Teks Pendek',
-                                    'textarea' => 'Teks Panjang',
-                                    'image' => 'URL / Path Gambar',
-                                    'boolean' => 'Boolean (Ya/Tidak)',
-                                    'json' => 'Format JSON',
+                                    'text' => __('Short Text'),
+                                    'textarea' => __('Long Text'),
+                                    'image' => __('Image URL / Path'),
+                                    'boolean' => __('Boolean (Yes/No)'),
+                                    'json' => __('JSON Format'),
                                 ])
                                 ->default('text')
                                 ->required(),
                         ]),
                         Textarea::make('value')
-                            ->label('Nilai Pengaturan (Value)')
+                            ->label(__('Setting Value'))
                             ->rows(4)
                             ->columnSpanFull(),
                     ]),
