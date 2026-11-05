@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.instansi.portal.portal_frontend"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
