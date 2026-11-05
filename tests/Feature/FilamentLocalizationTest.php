@@ -124,4 +124,3 @@ class FilamentLocalizationTest extends TestCase
         }
     }
 }
-
